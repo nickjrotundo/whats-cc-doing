@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "command -v ccdoing >/dev/null 2>&1 && [ -f ccdoing.yaml ] && { ccdoing doctor --arm-check || true; ccdoing doctor --drift --quiet || true; } || true"
+          }
+        ]
+      }
+    ]
+  }
+}

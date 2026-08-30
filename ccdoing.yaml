@@ -1,0 +1,46 @@
+# Self-monitoring config: ccdoing watching its own repository.
+# Doubles as a small real example; templates/ccdoing.example.yaml shows
+# every signal type.
+
+version: 1
+title: "whats-cc-doing dev"
+project_name: whats-cc-doing
+output_dir: reports/status
+refresh_seconds: 30
+
+verdict:
+  active_window_minutes: 60 # a repo, not a live app: commits move slower
+  health_failure_is_down: false # no always-up endpoint here
+
+signals:
+  - type: git
+    label: git commits
+    weight: primary
+    show_last: 10
+
+  - type: claude_session
+    label: claude sessions
+    weight: primary
+
+  - type: process
+    label: test runner
+    weight: info # informative here; pytest runs are short
+    pattern: "whats-cc-doing.*pytest" # path-scoped: pgrep matches machine-wide
+
+  - type: file_mtime
+    label: source changes
+    weight: primary
+    glob: "src/**/*.py"
+    show_newest: 5
+
+  - type: ci
+    label: GitHub Actions
+    weight: info
+
+watchdog:
+  enabled: true
+  check_interval_seconds: 60
+  remediation_prompt: .ccdoing/remediation-prompt.md
+  escalation:
+    - after_quiet_minutes: 120
+      action: log

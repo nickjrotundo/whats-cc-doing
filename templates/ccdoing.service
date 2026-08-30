@@ -1,0 +1,31 @@
+# systemd user unit for the ccdoing watchdog loop.
+#
+# 1. Replace {{PROJECT_ROOT}} and, if needed, {{CCDOING_BIN}} (find it
+#    with `which ccdoing`; a uv tool install puts it in ~/.local/bin).
+# 2. Save as ~/.config/systemd/user/ccdoing-{{PROJECT_NAME}}.service
+# 3. systemctl --user daemon-reload
+#    systemctl --user enable --now ccdoing-{{PROJECT_NAME}}
+# 4. Headless/servers: loginctl enable-linger $USER
+#    (user units die at logout otherwise)
+# 5. Verify: systemctl --user status ccdoing-{{PROJECT_NAME}}
+#            journalctl --user -u ccdoing-{{PROJECT_NAME}} -f
+#
+# WSL2 note: modern WSL2 supports systemd but VERIFY with
+# `systemctl --user show-environment` before assuming; fall back to the
+# cron line in templates/cron.txt if it errors.
+
+[Unit]
+Description=ccdoing status watchdog for {{PROJECT_NAME}}
+After=network.target
+
+[Service]
+WorkingDirectory={{PROJECT_ROOT}}
+ExecStart={{CCDOING_BIN}} run
+Restart=on-failure
+RestartSec=10
+# Notification / relay env vars, if used (values, not names, go here):
+# Environment=CCDOING_NOTIFY_URLS=ntfy://mytopic
+# Environment=CCDOING_HEALTHCHECKS_URL=https://hc-ping.com/<uuid>
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+{
+  "name": "ccdoing",
+  "displayName": "What's CC Doing",
+  "description": "Passive status page + watchdog for Claude Code sessions. Reads observed side effects (git, processes, task files) - nothing self-reports - and captures an ACTIVE/QUIET/DOWN/STUCK verdict with evidence. Can deliver the diagnosis into a provably stuck session as an informational nudge - never a resume or restart.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Nick Rotundo"
+  },
+  "repository": "https://github.com/nickjrotundo/whats-cc-doing",
+  "license": "MIT"
+}

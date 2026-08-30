@@ -1,0 +1,12 @@
+{
+  "name": "whats-cc-doing",
+  "owner": { "name": "Nick Rotundo" },
+  "description": "What's CC Doing - passive status page + watchdog for Claude Code sessions, with dead-wait detection and an informational nudge for provably stuck sessions - it never resumes or restarts anything.",
+  "plugins": [
+    {
+      "name": "ccdoing",
+      "source": ".",
+      "description": "Passive status page + watchdog for Claude Code sessions. Derives an ACTIVE/QUIET/DOWN/STUCK verdict from observed side effects (git, processes, task files) and can deliver the diagnosis into a provably stuck session as an informational nudge - never a resume or restart."
+    }
+  ]
+}

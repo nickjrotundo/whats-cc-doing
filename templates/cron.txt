@@ -1,0 +1,8 @@
+# cron fallback for the ccdoing watchdog (when systemd --user is not
+# available). `ccdoing tick` is cron-safe: all episode state lives in
+# .ccdoing/state.json, so one-shot invocations are exactly as capable as
+# the loop, just at 1-minute granularity.
+#
+# crontab -e, then add (adjust paths):
+
+* * * * * cd {{PROJECT_ROOT}} && {{CCDOING_BIN}} tick >> {{PROJECT_ROOT}}/.ccdoing/cron.log 2>&1

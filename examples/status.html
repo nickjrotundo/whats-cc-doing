@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="30">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>whats-cc-doing dev</title>
+<style>
+  body { background:#12141a; color:#d7dae0; font: 14px/1.5 system-ui, sans-serif;
+         max-width: 980px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 20px; margin: 8px 0; }
+  h2 { font-size: 14px; color: #9aa3b2; margin: 22px 0 6px;
+        text-transform: uppercase; letter-spacing: .05em; }
+  .banner { background:#1f8a4c; color:#fff; padding:12px 16px; border-radius:8px;
+             font-size:17px; font-weight:700; }
+  .stale-banner { background:#7a1f1f; color:#fff; padding:12px 16px;
+                   border-radius:8px; font-size:15px; font-weight:700;
+                   margin-bottom:10px; }
+  .cause { color:#b8bfca; margin:8px 2px 0; }
+  .meta { color:#78808f; font-size:12px; margin-top:6px; }
+  .maint { color:#e0b341; font-size:12px; margin:6px 2px 0; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align:left; padding:6px 8px; border-bottom:1px solid #262a33;
+            font-size:13px; vertical-align: top; }
+  th { color:#9aa3b2; font-weight:600; }
+  .activity td:last-child { font-weight:700; }
+  details { margin-top: 10px; }
+  summary { color:#9aa3b2; font-size:13px; cursor:pointer; }
+  pre { background:#191c24; padding:10px; border-radius:6px; overflow-x:auto;
+         font-size:12px; }
+  .mono { font-family: ui-monospace, monospace; font-size:12px; }
+</style></head><body>
+<div id="stale" class="stale-banner" hidden></div>
+<h1>whats-cc-doing dev</h1>
+<div class="banner">ACTIVE &mdash; work is moving</div>
+<p class="cause">activity on: git commits, claude sessions, source changes</p>
+<p class="meta">generated 2026-08-30 2:02 PM &middot;
+refreshes every 30s &middot;
+active window 60.0m &middot;
+whats-cc-doing 0.1.0 &middot; machine view: status.json</p>
+
+<h2>Activity signals</h2>
+<table class=activity><tbody><tr><td>git commits</td><td style='color:#1f8a4c'>ACTIVE</td></tr><tr><td>claude sessions</td><td style='color:#1f8a4c'>ACTIVE</td></tr><tr><td>source changes</td><td style='color:#1f8a4c'>ACTIVE</td></tr></tbody></table>
+<details><summary>All signals</summary>
+<table>
+<tr><th>signal</th><th>type</th><th>state</th><th>age</th><th>detail</th></tr>
+<tr><td>git commits</td><td class=mono>git</td><td style='color:#2ecc71;font-weight:600'>fresh</td><td>5m 13s</td><td>last commit 5m 13s ago</td></tr><tr><td>claude sessions</td><td class=mono>claude_session</td><td style='color:#2ecc71;font-weight:600'>fresh</td><td>5m 42s</td><td>WAITING_ON:1</td></tr><tr><td>source changes</td><td class=mono>file_mtime</td><td style='color:#2ecc71;font-weight:600'>fresh</td><td>59s</td><td>newest of 14 file(s): 59s ago</td></tr><tr><td>test runner</td><td class=mono>process</td><td style='color:#888;font-weight:600'>stale</td><td>-</td><td>not running</td></tr><tr><td>GitHub Actions</td><td class=mono>ci</td><td style='color:#888;font-weight:600'>stale</td><td>-</td><td>gh CLI not installed</td></tr>
+</table>
+</details>
+<h2>git commits</h2><pre>ff65ba5 5 minutes ago Integration: wire liveness into nudge, consolidate age formatting, docs consolidation, regen example + screenshot
+dd40d5b 9 minutes ago Merge branch &#x27;worktree-agent-a350621745ee758e1&#x27;
+ddc58cf 10 minutes ago Merge branch &#x27;agent-b-harness-cwd&#x27;
+81ae7eb 10 minutes ago Merge branch &#x27;worktree-agent-af51a6cd42ccb7206&#x27;
+46a93d9 10 minutes ago Merge branch &#x27;worktree-agent-ac9984b01053aacb8&#x27;
+40b752d 10 minutes ago README: soften standalone-usage wording (Nick)
+4d9db0f 11 minutes ago Tier 3 redesign: nudge (inform, never resume); remove healthchecks relay
+9ab8a3f 16 minutes ago Harness: cross-slug session discovery (cwd-based), registry enrichment, subagent listing
+a5b8e31 16 minutes ago Headless-box surface: ccdoing view (TUI), serve (no-store), project registry; drop Pages workflow
+3062c96 19 minutes ago UI pass: page title config, local human time, abridged activity table, stale-page self-check</pre><h2>claude sessions</h2><table><tr><th>session</th><th>state</th><th>age</th><th>evidence</th><th>tasks</th></tr><tr><td class=mono>2063c20b-ea42-42</td><td style='color:#7aa2f7;font-weight:600'>WAITING_ON</td><td>5m 42s</td><td>task b5coequen produced output 0s ago</td><td class=mono>b5coequen.output, ab63afc68171912d4.output, a350621745ee758e1.output, ac88be46bbd6eeaf3.output</td></tr><tr><td></td><td colspan=4 style='color:#78808f;font-size:12px'>session name: portfolio-02 - process: live - subagents: Integrate four feature branches* (2s), Remediation redesign nudge-only (11m), Harness cwd matching and progress (15m 14s), TUI viewer serve and registry (15m 53s), UI overhaul render layer (18m 11s), Implement ccdoing drift system (1h 41m)</td></tr></table><h2>source changes</h2><pre>tui.py  59s ago
+cli.py  1m 57s ago
+registry.py  2m 14s ago
+watchdog.py  3m 38s ago
+config.py  9m 31s ago</pre>
+<script>
+(function () {
+  try {
+    var GEN = 1788116526.873, THRESH = 90;
+    function fmt(s) {
+      s = Math.floor(s);
+      if (s < 60) return s + "s";
+      if (s < 3600) return Math.floor(s / 60) + "m " + (s % 60) + "s";
+      return Math.floor(s / 3600) + "h " + Math.floor((s % 3600) / 60) + "m";
+    }
+    function check() {
+      var age = Date.now() / 1000 - GEN;
+      var el = document.getElementById("stale");
+      if (!el) return;
+      if (age > THRESH) {
+        el.textContent = "status page is stale - generator appears down (last update "
+          + fmt(age) + " ago)";
+        el.hidden = false;
+      } else {
+        el.hidden = true;
+      }
+    }
+    check();
+    setInterval(check, 15000);
+  } catch (e) { /* degrade silently */ }
+})();
+</script>
+</body></html>

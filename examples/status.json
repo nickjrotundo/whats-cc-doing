@@ -1,0 +1,283 @@
+{
+ "generator": "whats-cc-doing 0.1.0",
+ "project": "whats-cc-doing",
+ "title": "whats-cc-doing dev",
+ "timezone": "local",
+ "generated_at": "2026-08-30T19:02:06Z",
+ "generated_epoch": 1788116526.8729775,
+ "refresh_seconds": 30,
+ "verdict": "ACTIVE",
+ "cause": "activity on: git commits, claude sessions, source changes",
+ "stuck_session_ids": [],
+ "quiet_since_epoch": null,
+ "quiet_for_seconds": null,
+ "active_window_minutes": 60.0,
+ "maintenance": [],
+ "signals": [
+  {
+   "label": "git commits",
+   "type": "git",
+   "weight": "primary",
+   "state": "ok",
+   "ok": true,
+   "fresh": true,
+   "healthy": null,
+   "age_seconds": 313.8729774951935,
+   "detail": "last commit 5m 13s ago",
+   "lines": [
+    "ff65ba5 5 minutes ago Integration: wire liveness into nudge, consolidate age formatting, docs consolidation, regen example + screenshot",
+    "dd40d5b 9 minutes ago Merge branch 'worktree-agent-a350621745ee758e1'",
+    "ddc58cf 10 minutes ago Merge branch 'agent-b-harness-cwd'",
+    "81ae7eb 10 minutes ago Merge branch 'worktree-agent-af51a6cd42ccb7206'",
+    "46a93d9 10 minutes ago Merge branch 'worktree-agent-ac9984b01053aacb8'",
+    "40b752d 10 minutes ago README: soften standalone-usage wording (Nick)",
+    "4d9db0f 11 minutes ago Tier 3 redesign: nudge (inform, never resume); remove healthchecks relay",
+    "9ab8a3f 16 minutes ago Harness: cross-slug session discovery (cwd-based), registry enrichment, subagent listing",
+    "a5b8e31 16 minutes ago Headless-box surface: ccdoing view (TUI), serve (no-store), project registry; drop Pages workflow",
+    "3062c96 19 minutes ago UI pass: page title config, local human time, abridged activity table, stale-page self-check"
+   ],
+   "error": null,
+   "sessions": []
+  },
+  {
+   "label": "claude sessions",
+   "type": "claude_session",
+   "weight": "primary",
+   "state": "ok",
+   "ok": true,
+   "fresh": true,
+   "healthy": null,
+   "age_seconds": 342.91022515296936,
+   "detail": "WAITING_ON:1",
+   "lines": [],
+   "error": null,
+   "sessions": [
+    {
+     "session_id": "2063c20b-ea42-4281-80ff-275a28344fcd",
+     "state": "WAITING_ON",
+     "transcript_age_s": 342.91022515296936,
+     "evidence": "task b5coequen produced output 0s ago",
+     "tasks": [
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/b5coequen.output",
+       "age_s": 0.27084827423095703
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/ab63afc68171912d4.output",
+       "age_s": 2.89890456199646
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a350621745ee758e1.output",
+       "age_s": 660.8170347213745
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/ac88be46bbd6eeaf3.output",
+       "age_s": 914.494478225708
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/af51a6cd42ccb7206.output",
+       "age_s": 953.0993094444275
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/ac9984b01053aacb8.output",
+       "age_s": 1091.1302950382233
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/bdisngwz3.output",
+       "age_s": 1310.190877199173
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/aceed270906ee1578.output",
+       "age_s": 6114.095175027847
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a3ebbb3004c8c432e.output",
+       "age_s": 75006.6076426506
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/aa18ab0064d1aa49d.output",
+       "age_s": 75169.92701673508
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/ae0a54eab8a2db8a5.output",
+       "age_s": 76071.23374938965
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a18f693a320ff99b6.output",
+       "age_s": 76118.88675141335
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a25466e920fe5a9eb.output",
+       "age_s": 76143.35525870323
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a893a692f5daa8095.output",
+       "age_s": 76151.13941717148
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a94d2e521855c5312.output",
+       "age_s": 76318.57474589348
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a2bd7c8819f4e70d3.output",
+       "age_s": 76320.35880327225
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a62cb3df6ea175fbe.output",
+       "age_s": 76330.33512067795
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a2cd477ac224d9053.output",
+       "age_s": 76336.63925147057
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/btli86kqe.output",
+       "age_s": 76358.70771694183
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/blb5h0euy.output",
+       "age_s": 76648.28971838951
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a70465293cb65a80d.output",
+       "age_s": 77390.88516545296
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a4af97c002ce3c99d.output",
+       "age_s": 77446.48231697083
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a11e6339ae90d16ac.output",
+       "age_s": 80780.90359282494
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/af875b5af78135a3e.output",
+       "age_s": 80783.73165106773
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a5bfe0f1d81e66667.output",
+       "age_s": 80792.67983555794
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/aaf15d4155585bcc9.output",
+       "age_s": 82924.47226333618
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/af99639f55723064f.output",
+       "age_s": 82988.55360078812
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a4128a2cee35055e7.output",
+       "age_s": 82997.37778520584
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/aba07d283fb6ab373.output",
+       "age_s": 83003.1579053402
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a03ddd0881656901d.output",
+       "age_s": 83026.64639496803
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/af4e8d3a7f6063fc2.output",
+       "age_s": 83036.38259792328
+      },
+      {
+       "path": "/tmp/claude-1000/-home-nick-PersonalDev-portfolio/2063c20b-ea42-4281-80ff-275a28344fcd/tasks/a510dc83495df346b.output",
+       "age_s": 83068.65126752853
+      }
+     ],
+     "last_line_type": "system",
+     "name": "portfolio-02",
+     "alive": true,
+     "subagents": [
+      {
+       "agent_id": "ab63afc68171912d4",
+       "description": "Integrate four feature branches",
+       "age_s": 2.89890456199646,
+       "active": true
+      },
+      {
+       "agent_id": "a350621745ee758e1",
+       "description": "Remediation redesign nudge-only",
+       "age_s": 660.8170347213745,
+       "active": false
+      },
+      {
+       "agent_id": "ac88be46bbd6eeaf3",
+       "description": "Harness cwd matching and progress",
+       "age_s": 914.494478225708,
+       "active": false
+      },
+      {
+       "agent_id": "af51a6cd42ccb7206",
+       "description": "TUI viewer serve and registry",
+       "age_s": 953.0993094444275,
+       "active": false
+      },
+      {
+       "agent_id": "ac9984b01053aacb8",
+       "description": "UI overhaul render layer",
+       "age_s": 1091.1302950382233,
+       "active": false
+      },
+      {
+       "agent_id": "aceed270906ee1578",
+       "description": "Implement ccdoing drift system",
+       "age_s": 6114.095175027847,
+       "active": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "test runner",
+   "type": "process",
+   "weight": "info",
+   "state": "ok",
+   "ok": true,
+   "fresh": false,
+   "healthy": null,
+   "age_seconds": null,
+   "detail": "not running",
+   "lines": [],
+   "error": null,
+   "sessions": []
+  },
+  {
+   "label": "source changes",
+   "type": "file_mtime",
+   "weight": "primary",
+   "state": "ok",
+   "ok": true,
+   "fresh": true,
+   "healthy": null,
+   "age_seconds": 59.27328848838806,
+   "detail": "newest of 14 file(s): 59s ago",
+   "lines": [
+    "tui.py  59s ago",
+    "cli.py  1m 57s ago",
+    "registry.py  2m 14s ago",
+    "watchdog.py  3m 38s ago",
+    "config.py  9m 31s ago"
+   ],
+   "error": null,
+   "sessions": []
+  },
+  {
+   "label": "GitHub Actions",
+   "type": "ci",
+   "weight": "info",
+   "state": "ok",
+   "ok": true,
+   "fresh": false,
+   "healthy": null,
+   "age_seconds": null,
+   "detail": "gh CLI not installed",
+   "lines": [],
+   "error": null,
+   "sessions": []
+  }
+ ]
+}

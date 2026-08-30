@@ -1,0 +1,147 @@
+# Example ccdoing.yaml - every signal type, annotated.
+# Copy what applies; `ccdoing init` generates a starter automatically.
+
+version: 1
+project_name: "my-project"
+title: "My Project status"        # page title/heading; omit to get the
+                                  # plain "What's CC Doing" fallback. At
+                                  # setup, Claude picks this from what the
+                                  # project is or the session's set name.
+timezone: local                   # local (default) | utc - display only;
+                                  # status.json always carries ISO/epoch
+output_dir: "reports/status"      # status.html + status.json land here
+refresh_seconds: 30
+
+verdict:
+  active_window_minutes: 15       # any fresh primary inside this => ACTIVE
+  health_failure_is_down: false   # true only for endpoints that are EXPECTED
+                                  # to be always up. A dev server that is
+                                  # only sometimes running would otherwise
+                                  # scream DOWN forever AND reset the quiet
+                                  # escalation ladder.
+
+signals:
+  # weight: primary = drives ACTIVE/QUIET | info = display only
+  #         health  = drives DOWN         | alert = pattern warnings
+
+  - type: git                     # commit recency is the durable heartbeat
+    label: git commits
+    weight: primary
+    show_last: 8
+
+  - type: claude_session          # the harness adapter: semantic session
+    label: claude sessions        # states incl. DEAD_WAIT stall evidence
+    weight: primary
+    # working_window_s: 180       # transcript younger than this => WORKING
+    # dead_after_s: 900           # task output older than this => dead-wait
+    # stuck_max_age_minutes: 120  # sessions inactive past this: ABANDONED
+    #                             # (informational), never STUCK/auto-resumed
+    # claude_home: ~/.claude      # override for tests/remote/WSL layouts
+    # task_root_glob: /tmp/claude-*   # macOS: task outputs may live under
+    #                             # $TMPDIR instead - set this accordingly
+    # project_root: /path/elsewhere   # monitor another project's sessions
+
+  - type: process
+    label: test runner
+    weight: primary
+    # SCOPE THE PATTERN. pgrep -af matches the FULL machine-wide command
+    # line: a bare "pytest" counts any checkout's (or any other agent's)
+    # test run as this project's activity - false ACTIVE that silently
+    # suppresses the watchdog. Anchor with the project path:
+    pattern: "/home/me/my-project.*(pytest|vitest)"
+    # ...but note the inverse: a process launched via a RELATIVE path
+    # (".venv/bin/pytest") never matches an absolute-path anchor. Prefer
+    # stable argv content that appears regardless of launch style.
+    # redact: true                # default: rendered lines show only
+    #                             # "PID basename (+N args)". Set false to
+    #                             # publish full command lines - remember
+    #                             # the Pages workflow makes this PUBLIC.
+
+  - type: file_mtime
+    label: build output
+    weight: info
+    glob: "dist/**/*"
+    show_newest: 5
+
+  - type: http
+    label: app health
+    weight: health
+    url: "http://localhost:8000/health"
+    expect_status: 200
+    timeout_s: 4
+
+  - type: log_tail
+    label: app errors
+    weight: alert
+    path: "logs/app.log"
+    error_pattern: "ERROR|CRITICAL|Traceback"
+    window_minutes: 15
+
+  - type: jsonl_log
+    label: LLM calls
+    weight: primary
+    path: "logs/llm_usage.jsonl"  # "today" counts use UTC dates; only the
+                                  # file tail is scanned (large logs stay fast)
+
+  - type: ci
+    label: GitHub Actions
+    weight: info
+    limit: 5
+
+  # Headline metrics from result JSONs (eval batteries, test-run saves).
+  # Glob patterns + newest-by-mtime, NEVER a fixed path: the original
+  # original hardcoded /tmp paths and the headline went stale the day
+  # after shipping. min_items keeps a single-scenario save from
+  # masquerading as the full battery.
+  - type: json_headline
+    label: eval results
+    weight: info
+    patterns: ["eval-results/*.json", "results/cq_*.json"]
+    min_items: 8                  # a "full run" for this project
+    # items_key: sessions         # default: tries "sessions" then "results"
+    template: "{passed}/{runnable} passed, {overall_mean_score:.0f}% overall"
+    # fields: passed/skipped/total/runnable (computed from the items) plus
+    # any top-level scalar in the JSON; missing fields render as "?"
+
+  # TRUST MODEL: `command` runs with shell=True as you. ccdoing.yaml is
+  # config-as-code - treat it like a Makefile, and never run ccdoing
+  # against a config you haven't read (e.g. in a freshly cloned repo).
+  - type: command                 # escape hatch; parse: number|text|epoch_mtime
+    label: queue depth
+    weight: info
+    command: "redis-cli llen jobs"
+    parse: number
+
+watchdog:
+  enabled: true
+  check_interval_seconds: 60
+  nudge_message: ".ccdoing/nudge-message.md"
+  # Where notify targets PERSIST: one apprise URL per line, # comments
+  # allowed. Read on every tick, so cron/systemd watchdogs need no env
+  # plumbing. $CCDOING_NOTIFY_URLS OVERRIDES this file when set. Keep it
+  # gitignored - topics/webhooks are effectively secrets.
+  notify_urls_file: ".ccdoing/notify.urls"
+  escalation:
+    - after_quiet_minutes: 15
+      action: log                 # appended to .ccdoing/watchdog.log
+    - after_quiet_minutes: 30
+      action: notify              # apprise URLs from .ccdoing/notify.urls
+                                  # ($CCDOING_NOTIFY_URLS overrides)
+    - after_quiet_minutes: 45
+      action: nudge               # informational message INTO the parked
+      cooldown_minutes: 60        # session (cross-session messaging via a
+      max_per_day: 3              # one-shot courier). Never resumes, never
+                                  # spawns work sessions; fires only when a
+                                  # DEAD_WAIT session was identified AND a
+                                  # live claude process exists for this
+                                  # project. Idle/finished sessions are
+                                  # never nudged. See templates/nudge-message.md
+
+# notify_urls_env: CCDOING_NOTIFY_URLS   # env var HOLDING apprise URLs
+
+# Config-drift detection: signals whose targets match nothing are marked
+# no-match immediately and stale after this many days; `ccdoing doctor
+# --drift` reports them plus detectable-but-unconfigured signals, and
+# /ccdoing:tune proposes fixes.
+# drift:
+#   stale_after_days: 7

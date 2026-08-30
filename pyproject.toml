@@ -1,0 +1,66 @@
+[project]
+name = "whats-cc-doing"
+version = "0.2.0"
+description = "Passive status page + watchdog for Claude Code sessions: see what Claude is doing from observed side effects (git, processes, task files), detect stalls, and deliver the diagnosis into a provably stuck session as an informational nudge - never a resume or restart."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Nick Rotundo" }]
+keywords = ["claude-code", "watchdog", "status-page", "monitoring", "agents"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: System :: Monitoring",
+]
+dependencies = [
+    "pyyaml>=6.0",
+    "apprise>=1.7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+ccdoing = "whats_cc_doing.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/nickjrotundo/whats-cc-doing"
+Repository = "https://github.com/nickjrotundo/whats-cc-doing"
+Issues = "https://github.com/nickjrotundo/whats-cc-doing/issues"
+Changelog = "https://github.com/nickjrotundo/whats-cc-doing/blob/main/CHANGELOG.md"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/whats_cc_doing"]
+
+[tool.hatch.build.targets.sdist]
+# The sdist is the immutable public tarball: keep dev diaries, lockfiles,
+# CI, plugin skills, and - critically - the author's own live monitor
+# config and outputs out of it.
+exclude = [
+    "uv.lock",
+    "ANALYSIS.md",
+    "BUILD-LOG.md",
+    "DESIGN.md",
+    "docs/",
+    "examples/",
+    "skills/",
+    "hooks/",
+    ".claude-plugin/",
+    ".github/",
+    "ccdoing.yaml",
+    ".ccdoing/",
+    "reports/",
+    "dist/",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
