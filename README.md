@@ -222,3 +222,9 @@ values you tuned.
 - [BUILD-LOG.md](https://github.com/nickjrotundo/whats-cc-doing/blob/main/BUILD-LOG.md) - origin story + how this was built (an AI-driven build, documented honestly)
 - [CHANGELOG.md](https://github.com/nickjrotundo/whats-cc-doing/blob/main/CHANGELOG.md) - release history
 - Questions/bugs: [GitHub Issues](https://github.com/nickjrotundo/whats-cc-doing/issues)
+
+Example prompts once the plugin is installed:
+
+1. `/ccdoing:setup` - set up the status monitor and watchdog for this project
+2. "what's happening in this project right now?" (`/ccdoing:status`)
+3. `/ccdoing:serve` - start the web dashboard and give me the link
