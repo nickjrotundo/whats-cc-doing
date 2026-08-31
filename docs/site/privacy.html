@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ccdoing - Privacy Policy</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto;
+         padding: 0 1rem; color: #222; background: #fff; line-height: 1.55; }
+  h1 { font-size: 1.5rem; } h2 { font-size: 1.15rem; margin-top: 1.6em; }
+  code { background: #f2f2f2; padding: 0.1em 0.3em; border-radius: 3px; }
+  a { color: #0b5fff; }
+  .meta { color: #666; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<h1>ccdoing (What's CC Doing) - Privacy Policy</h1>
+<p class="meta">Effective 2026-08-31. Applies to the ccdoing Claude Code
+plugin and the whats-cc-doing Python package.</p>
+
+<h2>The short version</h2>
+<p>ccdoing runs entirely on your machine. It has no telemetry, no
+analytics, no accounts, and it never sends anything to the developer.
+Data leaves your machine only through channels you explicitly configure
+(notifications) or actions you take yourself (publishing a page).</p>
+
+<h2>What it reads, locally</h2>
+<ul>
+  <li>Git metadata of the monitored project (commit times, short log lines).</li>
+  <li>The process table, to check whether configured processes are
+      running. Rendered process lines are redacted by default (process
+      name and argument count, not full command lines).</li>
+  <li>File modification times for globs you configure, and the contents
+      of log or results files you point signals at.</li>
+  <li>Health endpoints (HTTP status of URLs you configure, e.g.
+      <code>localhost:8500/health</code>).</li>
+  <li>Structural metadata of Claude Code's on-disk session files:
+      event timestamps, event types, working directories, session and
+      subagent identifiers, user-set session names, and subagent labels.
+      <strong>Conversation content is never read out, rendered, stored,
+      or transmitted.</strong></li>
+</ul>
+
+<h2>What it writes, locally</h2>
+<p>A status page (<code>status.html</code>) and machine snapshot
+(<code>status.json</code>) inside the monitored project, watchdog state
+under <code>.ccdoing/</code>, and a small registry of monitored project
+paths under your XDG state directory. All local files you can inspect
+and delete at any time.</p>
+
+<h2>What can leave your machine, and only if you set it up</h2>
+<ul>
+  <li><strong>Notifications.</strong> If you configure a notification
+      target (ntfy, Slack, or any apprise-supported service), escalation
+      messages are sent there. They contain the project name, the
+      verdict, and short signal summaries. For ntfy.sh, anyone who knows
+      your topic name can read the topic - ccdoing stores it in a
+      gitignored file and treats it as a secret; you should too.</li>
+  <li><strong>The optional nudge.</strong> The opt-in tier-3 action
+      delivers one informational message to another Claude Code session
+      on the same machine, over a local socket. It does not leave the
+      machine. The message text is a file you approved beforehand plus
+      signal readings.</li>
+  <li><strong>Serving.</strong> <code>ccdoing serve</code> binds
+      127.0.0.1 by default. Binding other interfaces, or publishing a
+      status page anywhere, is your action; remember the page shows
+      project names, session names, and file names.</li>
+</ul>
+
+<h2>What the developer receives</h2>
+<p>Nothing. There is no phone-home of any kind. If you file a GitHub
+issue, that is governed by GitHub's terms, not this policy.</p>
+
+<h2>Changes and contact</h2>
+<p>Changes to this policy are published at this URL with a new effective
+date. Questions:
+<a href="https://github.com/nickjrotundo/whats-cc-doing/issues">GitHub Issues</a>.</p>
+</body>
+</html>
